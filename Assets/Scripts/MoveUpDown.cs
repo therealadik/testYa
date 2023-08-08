@@ -13,11 +13,7 @@ public class MoveUpDown : MonoBehaviour
         startPosition = transform.position;
         startDirection.x = 0;
 
-        while (true)
-        {
-            print(Random.Range(0, 1));
-        }
-        
+        startDirection.y = Random.Range(0,2) == 0 ? 1 : -1;
     }
 
     void Update()

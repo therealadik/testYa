@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpForce;
 
     [SerializeField] private string _obstacleTag;
-    [SerializeField] private string _moneyTag;
+
+    [SerializeField] private TMP_Text _moneyText;
 
     private Rigidbody2D _rigidbody;
 
@@ -49,4 +51,16 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
+
+    public void AddCoin(int value)
+    {
+        Score += value;
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        _moneyText.text = Score.ToString();
+    }
+
 }
