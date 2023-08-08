@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
 public class Player : MonoBehaviour
 {
+    public float Score { get; private set; }
+
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
+
+    [SerializeField] private string _obstacleTag;
+    [SerializeField] private string _moneyTag;
 
     private Rigidbody2D _rigidbody;
 
@@ -37,6 +43,10 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string otherTag = collision.tag;
-        print(otherTag);
+
+        if (otherTag == _obstacleTag)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
